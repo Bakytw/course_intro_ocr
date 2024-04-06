@@ -2,14 +2,14 @@ from pathlib import Path
 
 def evaluate(gt_path, pred_path):
     gt = dict()
-    with open(gt_path) as gt_f:
+    with open(gt_path, encoding="utf-8") as gt_f:
         for line in gt_f:
             name, cls = line.strip().split()
             gt[name] = cls
     
     n_good = 0
     n_all = len(gt)
-    with open(pred_path) as pred_f:
+    with open(pred_path, encoding="utf-8") as pred_f:
         for line in pred_f:
             name, cls = line.strip().split()
             if cls == gt[name]:
